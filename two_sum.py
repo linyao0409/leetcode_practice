@@ -6,3 +6,5 @@ class Solution:
             if temp in HashTable:
                 return [HashTable[temp],i]
             HashTable[nums[i]] = i
+
+            #using hashtable as algo
