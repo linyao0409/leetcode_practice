@@ -8,8 +8,13 @@ class Solution:
                 return True  # if yes, return true
             else:
                 return False  # if false, return false
+            #return not x&1  use this to determine  even or not
+            #  x&1 if x is enen return 0
+            #      if x is odd return 1
+            #not x&1 return true if x is even
         count = 0
         for i in nums:
             if evenOrNot(i):
                 count += 1
         return count
+        
