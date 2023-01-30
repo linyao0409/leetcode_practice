@@ -1,1 +1,2 @@
-print("test for git")
+a = str(333)
+print(len(a))
