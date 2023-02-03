@@ -244,4 +244,4 @@ $$ f(x,y,z) frac{{a}{b}/right} $$
 
 
 
-this is [new link](test2.py)
+this is [new link](https://github.com/linyao0409/leetcode_practice/blob/main/leetcode/1051_Height_Checker.py)
