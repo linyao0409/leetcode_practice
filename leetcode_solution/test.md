@@ -247,3 +247,4 @@ $$ f(x,y,z) frac{{a}{b}/right} $$
 this is [new link](https://github.com/linyao0409/leetcode_practice/blob/main/leetcode/1051_Height_Checker.py)
 
 this is 2 [link2](test.py)
+i [press](leetcode/977_Squares_of_a_Sorted_Array.py)
