@@ -9,22 +9,22 @@
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
-        if head == None or head.next == None:
+        if head == None or head.next == None:#判斷head是不是指向None 且判斷linklisted是不是擁有不只一個元素
             return head
         current = head
-        temp = current
+        temp = current # current,temp都指向head
 
-        curNext = current.next
+        curNext = current.next #讓curNext先跑一格
 
-        while curNext:
-            current = curNext
-            curNext = current.next
-            current.next = temp
+        while curNext: #當curNext is not None into the loop
+            current = curNext # current 跟上 curNext
+            curNext = current.next #curNext 往右
+            current.next = temp #reverse it(讓current指向左邊的temp)
 
-            if temp == head:
+            if temp == head: #第一格時候temp位置在最左邊（等於head) 讓temp指向None
                 temp.next = None
             temp = current
         
-        head = current
+        head = current # curNext == None 跳出while ，current 是最後一個元素 更新head位置
         return head
 
