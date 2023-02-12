@@ -1,7 +1,7 @@
 # 206. Reverse Linked List.py
 
 ## solution
-1[solution](206.py)
+1[solution](206(leetcode).py)
 
 
 > 判斷條件：current.next 不等於 None
