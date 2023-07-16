@@ -50,6 +50,8 @@ class Solution:
 
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
         def Pacific(heights,i,j,matrix,val=0):
+            # out of range or the value if less than the value tyour eant toyo compare
+            # return directly 
             if i<0 or i>=h or j<0 or j>=w or heights[i][j]<val or matrix[i][j] == 1:
                 return
             # 位置合理 而且可以到海邊
@@ -59,7 +61,7 @@ class Solution:
             Pacific(heights,i,j-1,matrix,heights[i][j])
             Pacific(heights,i,j+1,matrix,heights[i][j])
 
-        def Atl(heights,i,j,matrix,val=0):
+        def Atl(heights,i,j,matrix2,val=0):
             if i<0 or i>=h or j<0 or j>=w or heights[i][j]<val or matrix2[i][j] == 1:
                 return
             # 位置合理 而且可以到海邊
