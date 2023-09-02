@@ -17,12 +17,11 @@ Input: nums = [1]
 Output: [[1]]
 """
 
-import deque from collections
+
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         res = []
         path = []
-        #delete = deque()
         l = nums.copy()
         def dfs(l):
             if not l:

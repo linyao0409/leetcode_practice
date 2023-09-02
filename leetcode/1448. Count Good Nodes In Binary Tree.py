@@ -28,7 +28,7 @@ class Solution:
         dfs(root,tempMax)
         return self.count
 
-
+# using nonlocal
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
         if not root:
@@ -36,6 +36,7 @@ class Solution:
         count = 0
         
         def dfs(node,tempMax):
+            # revise the variable count from local function
             nonlocal count
             if not node:
                 return

@@ -6,31 +6,28 @@ However, there is a non-negative integer n that represents the cooldown period b
 Return the least number of units of times that the CPU will take to finish all the given tasks.
 """
 
-
+import collections
+import heapq
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
-        if not tasks:
-            return 0
-        
-        count = 0
-        if n == 0:
-            return len(tasks)
-        
-        # greddy
-        # create a dictionary about frequency
-        d = {}
-        for x in tasks:
-            if x not in d:
-                d[x] = 1
+        d = collections.Counter(tasks)
+        MaxHeap = [-x for x in d.values()]
+        heapq.heapify(MaxHeap)
+
+        q = collections.deque()
+        time = 0
+
+        while MaxHeap or q:
+            time += 1
+            if not MaxHeap:
+                time = q[0][1]
             else:
-                d[x] += 1
-        d["idle"] = 0
-        print(d)
+                temp = heapq.heappop(MaxHeap)
+                if temp+1 != 0:
+                    q.append([temp+1,time+n])
+            if q and time == q[0][1]:
+                a = q.popleft()
+                heapq.heappush(MaxHeap,a[0])
+        return time
 
-        # find the most frequency and use it 
-        # and suspend using it for k times
 
-tasks = ["A","A","A","B","B","B"]
-n = 2
-a = Solution()
-a.leastInterval(tasks,n)

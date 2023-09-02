@@ -28,23 +28,7 @@ Input: candidates = [2], target = 1
 Output: []
 """
 
-class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        # conditiona:  sum == target -> return path
-        # if sum > target -> pop
-        res = []
-        cur = []
 
-        def helper(temp_sum,target):
-            if temp_sum  > target:
-
-            if temp_sum == target:
-
-            for x in candidates:
-                helper(temp_sum+x,target)
-
-        helper([],0,target)
-        return res
 
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:

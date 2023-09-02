@@ -25,19 +25,24 @@ Example 2:
 Input: stones = [1]
 Output: 1
 """
+
 import heapq
 
 
 class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
         heap = [-x for x in stones]
-        heap = heapq.heapify(heap)
+        heapq.heapify(heap)
 
-        while len(heap) >= 1:
-            if len(heap) == 1:
-                return heap[0]
+        while len(heap) > 1:
             x1 = heapq.heappop(heap) # min
             x2 = heapq.heappop(heap) # 2th 
             residual = x2-x1
             if residual:
-                heapq.heappushpop(heap, -residual)
+                heapq.heappush(heap, -residual)
+        
+        if heap:
+            return -heap[0]
+        else:
+            return 0
+            
