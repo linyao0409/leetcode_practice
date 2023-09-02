@@ -72,7 +72,16 @@ def mirror(root):
         if (curr.right):
             q.append(curr.right)
             
+# better one
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        mirror(root)
+        def dfs(root):
+            if not root:
+                return 
+            root.left,root.right = root.right,root.left
+            dfs(root.left)
+            dfs(root.right)
+        dfs(root)
         return root
+
+            

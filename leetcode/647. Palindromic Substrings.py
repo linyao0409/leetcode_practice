@@ -53,6 +53,32 @@ class Solution:
         return count
 
 
+
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        count = 0
+        length = len(s)
+        for i in range(length):
+            count += self.ispa(i,i,s)
+            count += self.ispa(i,i+1,s)
+        return count
+        
+    def ispa(self,l,r,s):
+        length = len(s)
+        res = 0
+        
+        while l >= 0 and r < length and s[l] == s[r]:
+            l -= 1
+            r += 1
+            res += 1
+        return res
+
+            
+
+
+
+                
+
             
 
 

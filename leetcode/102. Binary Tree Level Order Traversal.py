@@ -86,3 +86,23 @@ class Solution:
                 list1.append(level)
         
         return list1
+
+#########################################################################
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        ans = []
+        q = []
+        q.append(root)
+
+        while len(q) != 0:
+            element = []
+            length = len(q)
+            for i in range(length):
+                temp = q.pop(0)
+                if temp:
+                    element.append(temp.val)
+                    q.append(temp.left)
+                    q.append(temp.right)
+            if element:
+                ans.append(element)
+        return ans

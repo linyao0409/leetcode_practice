@@ -20,22 +20,6 @@ Both the left and right subtrees must also be binary search trees.
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        if not root :
-            return True
-        comp_L = True
-        comp_R = True
-        
-        if root.left:
-            comp_L = root.val > root.left.val
-        if root.right:
-            comp_R = root.val < root.right.val
-        if not(comp_L and comp_R):
-            return False
-
-        return self.isValidBST(root.left) and self.isValidBST(root.right)
-
-class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
         
         def helper(node, low, high):
             if not node:
@@ -46,6 +30,7 @@ class Solution:
         
         return helper(root, -inf, inf)
 
+# slow 
 class Solution:
     order = []
     def inorder(self,root):
@@ -58,12 +43,56 @@ class Solution:
         return sorted(order) == order
 
 class Solution:
-    def isValidBST(self,root):
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        self.indicator = True
+
+        def dfs(node):
+
+            if not node:
+                return True
+            if node.left:
+                if node.left.val > node.val:
+                    self.indicator = False
+            if node.right:
+                if node.right.val < node.val:
+                    self.indicator = False
+                #return False
+            if self.indicator:
+                return dfs(node.left) or dfs(node.right)
+            else:
+                return False
+        
+        return dfs(root)
+
+
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        self.indicator = True
         def helper(node,low,high):
             if not node:
                 return True
+            if self.indicator:
+                if low < node.val < high:
+                    return helper(node.left,low,node.val) and helper(node.right,node.val,high)
+                else:
+                    self.indicator = False
+            else:
+                return False
+        
+        return helper(root,float("-inf"),float("inf"))
+                
+
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        def helper(node, low, high):
+            if not node:
+                return True
+            
+            # If the current node does not satisfy the BST condition
             if not (low < node.val < high):
                 return False
-            return helper(root.left,low,node.val) and helper(root.right,node.val,high)
-        return helper(root,-inf,inf)
             
+            # Check left and right sub-trees
+            return helper(node.left, low, node.val) and helper(node.right, node.val, high)
+
+        return helper(root, float("-inf"), float("inf"))
